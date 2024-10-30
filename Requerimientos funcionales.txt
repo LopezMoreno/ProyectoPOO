@@ -1,0 +1,93 @@
+Requerimientos Funcionales
+1. Gestión de Vehículos
+Agregar Vehículo: Permitir que solo los usuarios con permisos de administrador agreguen un vehículo a la lista.
+Los datos del vehículo deben incluir modelo, matrícula, disponibilidad, marca, tipo y precio base.
+
+Restricciones:
+La matrícula debe ser única y validada en el sistema.
+La disponibilidad inicial debe estar configurada como "disponible" o "en mantenimiento".
+
+
+Eliminar Vehículo: Solo los usuarios con permisos de administrador pueden eliminar un vehículo. 
+No se pueden eliminar vehículos que tengan alquileres activos.
+
+Restricciones:
+La eliminación solo será posible si la disponibilidad está configurada en "disponible".
+
+
+Obtener todos los Vehículos: Consultar la lista de todos los vehículos registrados en el sistema, incluyendo su estado de disponibilidad.
+Obtener Vehículos por Marca: Filtrar los vehículos por la marca especificada.
+
+Restricciones:
+La marca debe existir en el sistema y estar registrada previamente.
+
+
+Obtener Vehículos por Tipo: Filtrar los vehículos según el tipo (ejemplo: SUV, sedán, camión).
+
+Restricciones:
+El tipo debe existir y estar registrado en el sistema.
+
+
+2. Administración de Precios
+
+Establecer Precios Base: Permitir la configuración del precio base por hora y por día para cada marca y tipo de vehículo.
+Restricciones:
+El precio base por hora y por día debe ser un valor positivo.
+Solo administradores pueden actualizar los precios base.
+
+
+Calcular Precio: Los precios deben calcularse automáticamente en función de la duración del alquiler (por horas o días), el tipo y la gama del vehículo.
+Restricciones:
+La gama del vehículo influirá en el precio final a través de un coeficiente multiplicador.
+Para alquileres de más de 24 horas, el precio debe calcularse usando el precio diario.
+
+
+3. Clasificación de Vehículos
+
+Registrar Tipos de Vehículos: Definir y registrar nuevos tipos de vehículos en el sistema.
+Restricciones:
+Solo los usuarios con nivel de administrador pueden registrar nuevos tipos.
+El nombre del tipo debe ser único.
+
+
+Registrar Marcas: Registrar nuevas marcas de vehículos, asociándolas a una gama específica.
+Restricciones:
+La marca y la gama deben estar registradas en el sistema y no deben duplicarse.
+La gama debe incluir un coeficiente de precio que se aplicará en los cálculos de alquiler.
+
+4. Alquiler de Vehículos
+Registrar Alquiler: Permitir que los clientes realicen alquileres de vehículos, especificando la fecha de inicio, el tiempo de alquiler, y la fuente de alquiler (tienda física, llamada telefónica o sitio web).
+Restricciones:
+Solo vehículos con disponibilidad "disponible" pueden ser alquilados.
+No se permite alquilar un vehículo que tenga un alquiler pendiente de finalizar.
+La fuente de alquiler debe estar predeterminada en el sistema.
+
+
+Finalizar Alquiler: Permitir que un usuario autorizado finalice un alquiler, calculando automáticamente el costo en función de la duración.
+Restricciones:
+Solo se puede finalizar un alquiler si la fecha de fin ha sido alcanzada o si el cliente ha solicitado la finalización anticipada.
+
+
+Consultar Historial de Alquileres: Los clientes y administradores deben poder consultar el historial de alquileres.
+Restricciones:
+Los clientes solo pueden ver sus propios alquileres.
+Los administradores pueden acceder al historial completo.
+
+5. Gestión de Clientes
+Registrar Cliente: Permitir la creación de clientes en el sistema, clasificándolos en personas naturales o jurídicas. Las personas jurídicas deberán tener un responsable asignado.
+Restricciones:
+La información del cliente debe ser completa y validada (nombre, dirección, teléfono, correo).
+Los clientes personas jurídicas deben registrar el nombre de la empresa y la información de su representante legal.
+
+
+Actualizar Datos del Cliente: Permitir la modificación de la información del cliente cuando sea necesario.
+Restricciones:
+La actualización de datos solo puede ser realizada por el cliente mismo o por un administrador.
+
+
+6. Control de Usuarios y Permisos
+Validar Acceso: Determinar y validar los permisos de acceso de los administradores y empleados a funciones específicas, como la gestión de vehículos, clientes y alquileres.
+Restricciones:
+Los administradores pueden gestionar vehículos, clientes y alquileres.
+Los empleados pueden ver información, pero no modificar registros críticos como los vehículos o los precios.
+Solo los administradores pueden actualizar o eliminar registros en el sistema.
